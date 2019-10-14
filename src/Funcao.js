@@ -2,7 +2,11 @@ import React from 'react'
 
 function Funcao() {
 
-    return <h1> Função </h1>
+  return ( 
+    <div className='container'>
+    	<h1> Função </h1>
+    </div>
+    	)
 }
 
 export default Funcao
