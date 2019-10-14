@@ -11,7 +11,7 @@ const Series = () => {
             setData(res.data.data)
         })
     },[]);
-
+    console.log(data)
     const renderizaLinha = record => {
         return (
             <tr key={record.id}>

@@ -15,7 +15,9 @@ const NovaSerie = () => {
     axios
     .post('/api/series', { name })
 
-    .then(setSuccess(true))
+    .then(res => { 
+      setSuccess(true) 
+    })
 
    }
    if (success) {
@@ -24,7 +26,7 @@ const NovaSerie = () => {
    }
 
   return (
-
+//.then(setSuccess(true))
     <div className='container'>
     <h1>Nova Série </h1>
 

@@ -15,7 +15,7 @@ const NovoGenero = () => {
     axios
     .post('/api/genres', { name })
 
-    .then(setSuccess(true))
+    .then(res=> {(setSuccess(true))})
 
    }
    if (success) {

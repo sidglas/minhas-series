@@ -30,7 +30,7 @@ const EditarSerie = ({ match }) => {
     axios
     .put('/api/series/' + match.params.id,{ name })
 
-    .then(setSuccess(true))
+    .then(res=>{setSuccess(true)})
 
    }
    if (success) {
