@@ -25,7 +25,6 @@ const Series = () => {
         )
     }
 
-    //Caso não exista nenhum genero cadastrado no BDS
     if(data.length === 0){
         return(
             <div className="container">
