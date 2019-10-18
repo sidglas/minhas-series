@@ -2,28 +2,33 @@ import React , { useState } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
+
+
+
 const NovaSerie = () => {
   const[name, setName] = useState('')
   const[success, setSuccess] = useState(false)
+
 
   const onChange = evt => {
     setName(evt.target.value)
   }
 
+  
   const save = () => {
 
-    axios
-    .post('/api/series', { name })
-
+  axios
+    .post('/api/series', { 
+      name: name,
+     })
     .then(res => { 
       setSuccess(true) 
     })
-
-   }
-   if (success) {
-
-      return <Redirect to='/series' />
-   }
+  }
+  
+  if (success) {
+     return <Redirect to='/series' />
+  }
 
   return (
 //.then(setSuccess(true))
@@ -36,6 +41,7 @@ const NovaSerie = () => {
           <input type='text' value={name} onChange={onChange} className='form-control' 
             id='name' placeholder='Nome da Série' />  
         </div>
+
         <button type='button' onClick={save} className='btn btn-primary'>Salvar</button>
       </form>
 

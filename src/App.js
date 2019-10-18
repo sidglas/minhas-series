@@ -5,7 +5,8 @@ import NovoGenero from './NovoGenero'
 import EditarGenero from './EditarGenero'
 import Series from './Series'
 import NovaSerie from './NovaSerie'
-import EditarSerie from './EditarSerie'
+import InfoSerie from './InfoSerie'
+
 
 
 import {
@@ -34,7 +35,7 @@ function App() {
           <Route path='/generos/:id' component={EditarGenero} />
           <Route path='/series' exact component={Series} />
           <Route path='/series/novo' exact component={NovaSerie} />
-          <Route path='/series/:id' component={EditarSerie} />
+          <Route path='/series/:id' component={InfoSerie} />
         </Switch>
         
       </div>
