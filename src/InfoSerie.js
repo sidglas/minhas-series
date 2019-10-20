@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import { Badge } from 'reactstrap'
 
+
 const InfoSerie = ({match}) => {
   const[form, setForm] = useState({
     name:'',
@@ -11,6 +12,7 @@ const InfoSerie = ({match}) => {
   const[success, setSuccess] = useState(false)
   const[mode, setMode] = useState('INFO')
   const[genres, setGenres] = useState([])
+  const [derivedGenres, setDerivedGenres] = useState([]);
 
   const[data, setData] = useState({})
 
@@ -25,6 +27,13 @@ const InfoSerie = ({match}) => {
     .get('/api/genres')
     .then(res =>{
         setGenres(res.data.data)
+
+        let linhas = res.data.data
+        let novo = []
+        //linhas.map( linha =>  console.log([linha.id] , linha.name) )
+        linhas.map( linha => novo[linha.id] = linha.name )
+        setDerivedGenres(novo)
+
     })  
   }, [match.params.id])
 
@@ -51,11 +60,7 @@ const InfoSerie = ({match}) => {
 
       let elem = document.getElementById('genero')
       let item = elem.options[elem.selectedIndex]
-      /*
-      console.log(item)
-      console.log(elem.options[elem.selectedIndex].text)
-      console.log(item.text)
-      */
+
       setForm({
         ...form,
         [field]: evt.target.value , 
@@ -104,7 +109,7 @@ const InfoSerie = ({match}) => {
                     <div className='lead text-white'>
                      {data.status === 'ASSISTIDO' && <Badge color='success'> Assistido </Badge> }
                       {data.status === 'PARA_ASSISTIR' && <Badge color='warning'> Para assistir </Badge> }
-                      Gênero: {data.genre}
+                      Gênero: {derivedGenres[data.genre_id]} 
                     </div>
 
                   </div>            
