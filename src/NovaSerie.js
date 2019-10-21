@@ -2,9 +2,6 @@ import React , { useState , useEffect} from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
-
-
-
 const NovaSerie = () => {
   //const[name, setName] = useState('')
   const[success, setSuccess] = useState(false)
@@ -19,7 +16,6 @@ const NovaSerie = () => {
         setGenres(res.data.data)
     })  
   }, [])
-
 
 
   const onChange = field => evt => {
