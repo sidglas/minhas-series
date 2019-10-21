@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 
 
 const NovaSerie = () => {
-  const[name, setName] = useState('')
+  //const[name, setName] = useState('')
   const[success, setSuccess] = useState(false)
   const[form, setForm] = useState([])
   const[genres, setGenres] = useState([])
@@ -21,14 +21,8 @@ const NovaSerie = () => {
   }, [])
 
 
-  const onChange = evt => {
-    setName(evt.target.value)
-  }
 
-
-  const onChange1 = field => evt => {
-
-    console.log('CAMPO CAMPO', field)
+  const onChange = field => evt => {
 
     if (field !== 'genre_id') {
 
@@ -41,10 +35,6 @@ const NovaSerie = () => {
 
       let elem = document.getElementById('genero')
       let item = elem.options[elem.selectedIndex]
-
-      console.log(item, 'AA')
-      console.log(elem.options[elem.selectedIndex].text, 'BB')
-      console.log(item.text, 'CC')
 
       setForm({
         ...form,
@@ -84,13 +74,14 @@ const NovaSerie = () => {
       <form>
         <div className='form-group'>
           <label htmlFor='name'>Nome</label>
-          <input type='text' value={form.name} onChange={onChange1('name')} className='form-control' 
+          <input type='text' value={form.name} onChange={onChange('name')} className='form-control' 
             id='name' placeholder='Nome da Série' />  
         </div>
 
         <div className='form-group'>
           <label htmlFor='name'>Gênero</label>
-          <select className='form-control' id="genero" onChange={onChange1('genre_id')} value={form.genre_id}>
+          <select className='form-control' id="genero" onChange={onChange('genre_id')} value={form.genre_id}>
+            <option key="0" value="0">Selecione</option>
             { genres.map(genre => <option key={genre.id} value={genre.id} selected={genre.id === form.genre}>{genre.name}</option>) }
           </select>
         </div>
